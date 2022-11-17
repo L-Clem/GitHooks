@@ -5,7 +5,7 @@ Little project to show our understanding of git's hook system.
 
 ## Commits
 
-Attention, your commits will have to follow this syntax :
+Attention, your commits will have to follow this syntax:
 
 ```txt
 <gitmoji1, gitmoji2...> (scope1, scope2...): Message
@@ -17,7 +17,7 @@ Exemple with [Gitmoji](https://gitmoji.dev/):
 
 ## Installation
 
-To initialise the project with git, run this command in the local repository :
+To initialise the project with git, run this command in the local repository:
 
 ```bash
   git config core.hooksPath .hooks
@@ -26,7 +26,7 @@ To initialise the project with git, run this command in the local repository :
     
 ## Running Tests
 
-To run tests, run the following command :
+To run tests, run the following command:
 
 ```bash
   npm run test
@@ -35,7 +35,7 @@ To run tests, run the following command :
 
 ## Documentation
 
-Class diagram of the solution.
+Class diagram of the solution:
 
 ```mermaid
 classDiagram
@@ -98,7 +98,7 @@ classDiagram
 ```
 
 ## Screenshots
-Screenshot of the interface :
+Screenshot of the interface:
 
 ![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
 
