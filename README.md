@@ -3,6 +3,17 @@
 
 Little project to show our understanding of git's hook system.
 
+## Commits
+
+Attention, your commits will have to follow this syntax :
+
+```txt
+<gitmoji1, gitmoji2...> (scope1, scope2...): Message
+```
+Exemple with [Gitmoji](https://gitmoji.dev/):
+```txt
+🎨, ⚡️ (dev, card): Add card to something
+```
 
 ## Installation
 
