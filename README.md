@@ -35,6 +35,16 @@ To run tests, run the following command:
 
 ## Documentation
 
+### Git hooks list
+- Commit: 
+  - commit-msg: Run PreCommit.java and pass commit path to it.
+  - PreCommit.java: Test the commit message against the defined schema (cf. Commits section).
+- Pre-Push:
+  - pre-push: Run PrePush.java.
+  - PrePush.java: WIP.
+
+### Class diagram
+
 Class diagram of the solution:
 
 ```mermaid
