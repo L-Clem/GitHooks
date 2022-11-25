@@ -47,8 +47,8 @@ classDiagram
         List~Client~ connected
 
         Bank(int id, List~Client~) Bank
-        login(int accountId, String password) bool
-        logout(int clientId) bool
+        login(int accountId, String password) boolean
+        logout(int clientId) boolean
         giveLoan(Account account, int amount) Loan
     }
 
@@ -60,10 +60,10 @@ classDiagram
         List~Card~ cards
 
         Account(Client client) Account
-        createCard(int pinNumber) bool
-        transfert(int accountId, int amount) bool
-        deposit(int amount) bool
-        takeout(int amount) bool
+        createCard(int pinNumber) boolean
+        transfert(int accountId, int amount) boolean
+        deposit(int amount) boolean
+        takeout(int amount) boolean
     }
 
     class Card{
@@ -72,8 +72,8 @@ classDiagram
         Account cardAccount
 
         Card(Account account, int pinNumber) Card
-        deposit(int amount, int pinNumber) bool
-        takeout(int amount, int pinNumber) bool
+        deposit(int amount, int pinNumber) boolean
+        takeout(int amount, int pinNumber) boolean
     }
 
     class Loan{
@@ -82,7 +82,7 @@ classDiagram
         -double outstanding
 
         ~Loan(int amount) Loan
-        ~pay(int amount) bool
+        ~pay(int amount) boolean
     }
 ```
 
