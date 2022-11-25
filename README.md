@@ -77,12 +77,12 @@ classDiagram
     }
 
     class Loan{
-        int id
-        int amount
-        double outstanding
+        -int id
+        -int amount
+        -double outstanding
 
-        Loan(int amount) Loan
-        pay(int amount) bool
+        ~Loan(int amount) Loan
+        ~pay(int amount) bool
     }
 ```
 
