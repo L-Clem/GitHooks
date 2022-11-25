@@ -88,8 +88,8 @@ classDiagram
     }
 
     class Loan{
-        int id
-        int amount
+        int ID
+        int AMOUNT
         double outstanding
 
         Loan(int amount) Loan
