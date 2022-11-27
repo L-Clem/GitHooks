@@ -64,6 +64,7 @@ classDiagram
 
     class Bank{
         int id
+        String name
         List~Client~ clients
         List~Client~ connected
 
