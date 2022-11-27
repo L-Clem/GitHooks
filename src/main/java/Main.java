@@ -7,7 +7,7 @@ public class Main {
         ArrayList<Bank> banks = new ArrayList<>();
         banks.add(new Bank(1, "Cool bank", new ArrayList<Client>()));
         banks.add(new Bank(2, "Evil bank", new ArrayList<Client>()));
-        banks.add(new Bank(3, "Cool bank", new ArrayList<Client>()));
+        banks.add(new Bank(3, "Normal bank", new ArrayList<Client>()));
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Welcome to your banking app");
