@@ -1,10 +1,12 @@
 public class Bank {
     int id;
+    String name;
     List<Client> clients;
     List<Client> connected;
 
-    Bank(int id, List<Client> clients){
+    Bank(int id, String name, List<Client> clients){
         this.id = id;
+        this.name = name;
         this.clients = clients;
     }
 
