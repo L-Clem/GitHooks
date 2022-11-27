@@ -83,7 +83,7 @@ classDiagram
 
         Account(Client client) Account
         createCard(int pinNumber) bool
-        transfert(int accountId, int amount) bool
+        transfer(int accountId, int amount) bool
         deposit(int amount) bool
         takeout(int amount) bool
     }
