@@ -1,3 +1,4 @@
+import java.util.concurrent.ThreadLocalRandom;
 
 public class Client {
 		
@@ -7,9 +8,12 @@ public class Client {
 	String password;
 	
 	//Constructeur
-	Client(String name, String password){
-		this.name = name;
-		this.password = password;
+	Client(int idClient, String name, String password) {
+		if (name != null || password != null){
+			this.idClient = idClient;
+			this.name = name;
+			this.password = password;
+		}
 	}
 	
 }

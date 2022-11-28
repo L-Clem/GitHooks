@@ -3,11 +3,11 @@ import java.util.Objects;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
 
-        Client client1 = new Client("Le Blanc", "Eloïse");
-		Client client2 = new Client("Tromeur", "Chloé");
-		Client client3 = new Client("Proust", "Lou");
+        Client client1 = new Client(1, "Le Blanc", "Eloïse");
+		Client client2 = new Client(2, "Tromeur", "Chloé");
+		Client client3 = new Client(3, "Proust", "Lou");
 
         ArrayList<Bank> banks = new ArrayList<>();
         banks.add(new Bank(1,"Cool bank"));

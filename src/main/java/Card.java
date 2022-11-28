@@ -7,8 +7,8 @@ public class Card {
 	Account accountId;
 	
 	// Constructeur
-	Card(Account accountId, int pinNumber){
-		this.accountId = accountId;
+	Card(Account account, int pinNumber){
+		this.accountId = account;
 		this.pinNumber = pinNumber;
 	}
 	
