@@ -11,7 +11,7 @@ public class TestClient {
 		Client client = new Client("Le Blanc", "Eloïse");
 		assertEquals(client.name,"Le Blanc");
 	}
-	
+	 
 	@Test
 	//Test échoué
 	public void testNameFalse() {
