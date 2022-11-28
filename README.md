@@ -64,8 +64,8 @@ classDiagram
 
     class Bank{
         int id
-        List~Client~ clients
-        List~Client~ connected
+        ArrayList~Client~ clients
+        ArrayqList~Client~ connected
 
         Bank(int id, List~Client~) Bank
         login(int accountId, String password) boolean
@@ -77,8 +77,8 @@ classDiagram
         int id
         Client client
         double balance
-        List~Loan~ loans
-        List~Card~ cards
+        ArrayList~Loan~ loans
+        ArrayList~Card~ cards
 
         Account(Client client) Account
         createCard(int pinNumber) boolean
@@ -90,7 +90,7 @@ classDiagram
     class Card{
         int cardNumber
         int pinNumber
-        Account cardAccount
+        Account account
 
         Card(Account account, int pinNumber) Card
         deposit(int amount, int pinNumber) boolean
@@ -103,7 +103,7 @@ classDiagram
         -double outstanding
 
         ~Loan(int amount) Loan
-        ~pay(int amount) boolean
+        ~pay(Account account, int amount) boolean
     }
 ```
 
