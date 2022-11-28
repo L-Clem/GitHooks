@@ -4,11 +4,11 @@ public class Card {
 	int idCard;
 	int cardNumber;
 	int pinNumber;
-	Account accountId;
+	Account account;
 	
 	// Constructeur
-	Card(Account accountId, int pinNumber){
-		this.accountId = accountId;
+	Card(Account account, int pinNumber){
+		this.account = account;
 		this.pinNumber = pinNumber;
 	}
 	
