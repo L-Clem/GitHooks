@@ -5,9 +5,11 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
+        // Création de 3 clients pour l'application
         Client client1 = new Client("Le Blanc", "Eloïse");
 		Client client2 = new Client("Tromeur", "Chloé");
 		Client client3 = new Client("Proust", "Lou");
+
 
         ArrayList<Bank> banks = new ArrayList<>();
         banks.add(new Bank(1, "Cool bank", new ArrayList<Client>(client1)));
@@ -35,5 +37,7 @@ public class Main {
         // login
 
         // show bank account balance and possible actions when logged in
+
+        // takeout money
     }
 }
