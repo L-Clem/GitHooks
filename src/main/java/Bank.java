@@ -1,19 +1,26 @@
-public class Bank {
-    int id;
-    String name;
-    List<Client> clients;
-    List<Client> connected;
+import java.util.ArrayList;
 
-    Bank(int id, String name, List<Client> clients){
+public class Bank {
+    private int id;
+    public String name;
+    private ArrayList<Account> accounts;
+    private ArrayList<Client> connected;
+
+    Bank(int id, String name){
         this.id = id;
         this.name = name;
-        this.clients = clients;
     }
 
     public boolean login(int accountId, String password){
-        for (int i =0; i < this.clients.size(); i++){
-            if (this.clients.get(i).id == clientId){
-                this.clients.remove(i);
+        for(int i=0; i < this.connected.size(); i++){
+            if (this.connected.contains(this.connected.get(i))){
+                return true;
+            }
+        }
+
+        for (Account account : this.accounts) {
+            if (account.id == accountId && account.client.password.equals(password)) {
+                this.connected.add(account.client);
                 return true;
             }
         }
@@ -22,7 +29,7 @@ public class Bank {
 
     public boolean logout(int clientId){
         for (int i =0; i < this.connected.size(); i++){
-            if (this.connected.get(i).id == clientId){
+            if (this.connected.get(i).idClient == clientId){
                 this.connected.remove(i);
                 return true;
             }
@@ -30,7 +37,11 @@ public class Bank {
         return false;
     }
 
-    public Loan giveLoan(Account account, int amount){
-        return account.loans.add(Loan(amount));
+    public boolean giveLoan(Account account, int amount){
+        return account.loans.add(new Loan(amount));
+    }
+
+    public void addClient(Client client) {
+        this.accounts.add(new Account(client));
     }
 }

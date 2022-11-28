@@ -12,10 +12,14 @@ public class Main {
 
 
         ArrayList<Bank> banks = new ArrayList<>();
-        banks.add(new Bank(1, "Cool bank", new ArrayList<Client>(client1)));
-        banks.add(new Bank(2, "Evil bank", new ArrayList<Client>(client2)));
-        banks.add(new Bank(3, "Normal bank", new ArrayList<Client>(client3)));
+        banks.add(new Bank(1,"Cool bank"));
+        banks.add(new Bank(2,"Evil bank"));
+        banks.add(new Bank(3,"Normal bank"));
         Scanner scanner = new Scanner(System.in);
+
+        banks.get(1).addClient(client1);
+        banks.get(2).addClient(client2);
+        banks.get(3).addClient(client3);
 
         System.out.println("Welcome to your banking app");
 
@@ -23,10 +27,12 @@ public class Main {
         banks.forEach(bank -> System.out.println(bank.name));
 
         String bankNameInput = "";
-        while(banks.stream().noneMatch(bank -> bankNameInput.equals(bank.name))) {
+        String finalBankNameInput = bankNameInput;
+        while(banks.stream().noneMatch(bank -> finalBankNameInput.equals(bank.name))) {
             bankNameInput = scanner.nextLine();
-            if (banks.stream().filter(b -> Objects.equals(b.name, bankNameInput)).toArray().length > 0) {
-                System.out.println("You chose " + bankNameInput);
+            String finalBankNameInput1 = bankNameInput;
+            if (banks.stream().filter(b -> Objects.equals(b.name, finalBankNameInput1)).toArray().length > 0) {
+                System.out.println("You chose " + finalBankNameInput);
             } else {
                 System.out.println("The bank you chose is not in our database");
             }
