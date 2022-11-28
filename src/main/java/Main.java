@@ -4,10 +4,15 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+
+        Client client1 = new Client("Le Blanc", "Eloïse");
+		Client client2 = new Client("Tromeur", "Chloé");
+		Client client3 = new Client("Proust", "Lou");
+
         ArrayList<Bank> banks = new ArrayList<>();
-        banks.add(new Bank(1, "Cool bank", new ArrayList<Client>()));
-        banks.add(new Bank(2, "Evil bank", new ArrayList<Client>()));
-        banks.add(new Bank(3, "Normal bank", new ArrayList<Client>()));
+        banks.add(new Bank(1, "Cool bank", new ArrayList<Client>(client1)));
+        banks.add(new Bank(2, "Evil bank", new ArrayList<Client>(client2)));
+        banks.add(new Bank(3, "Normal bank", new ArrayList<Client>(client3)));
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Welcome to your banking app");
@@ -24,6 +29,8 @@ public class Main {
                 System.out.println("The bank you chose is not in our database");
             }
         }
+
+
 
         // login
 
