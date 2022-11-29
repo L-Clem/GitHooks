@@ -3,7 +3,7 @@ import java.util.UUID;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Account {
-    private final UUID uuid = UUID.randomUUID();
+    final UUID uuid = UUID.randomUUID();
     Client client;
     public double balance;
     ArrayList<Loan> loans;

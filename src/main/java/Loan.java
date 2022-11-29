@@ -3,7 +3,7 @@ import java.util.UUID;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Loan {
-    private final UUID uuid = UUID.randomUUID();
+    final UUID uuid = UUID.randomUUID();
     final int amount;
     double outstanding;
 

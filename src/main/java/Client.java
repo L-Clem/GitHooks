@@ -3,7 +3,7 @@ import java.util.UUID;
 public class Client {
 		
 	// Variables 
-	private final UUID uuid = UUID.randomUUID();
+	final UUID uuid = UUID.randomUUID();
 	String name;
 	String password;
 	
