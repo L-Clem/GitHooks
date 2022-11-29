@@ -55,7 +55,7 @@ classDiagram
     Loan ..> Account
 
     class Client{
-        int id
+        ~UUID uuid
         String name
         Strig password
 
@@ -63,9 +63,9 @@ classDiagram
     }
 
     class Bank{
-        int id
-        List~Client~ clients
-        List~Client~ connected
+        ~UUID uuid
+        ArrayList~Client~ clients
+        ArrayqList~Client~ connected
 
         Bank(int id, List~Client~) Bank
         login(int accountId, String password) boolean
@@ -74,11 +74,11 @@ classDiagram
     }
 
     class Account{
-        int id
+        ~UUID uuid
         Client client
         double balance
-        List~Loan~ loans
-        List~Card~ cards
+        ArrayList~Loan~ loans
+        ArrayList~Card~ cards
 
         Account(Client client) Account
         createCard(int pinNumber) boolean
@@ -88,9 +88,10 @@ classDiagram
     }
 
     class Card{
+        ~UUID uuid
         int cardNumber
         int pinNumber
-        Account cardAccount
+        Account account
 
         Card(Account account, int pinNumber) Card
         deposit(int amount, int pinNumber) boolean
@@ -98,12 +99,12 @@ classDiagram
     }
 
     class Loan{
-        -int id
-        -int amount
-        -double outstanding
+        ~UUID uuid
+        ~int amount
+        ~double outstanding
 
         ~Loan(int amount) Loan
-        ~pay(int amount) boolean
+        ~pay(Account account, int amount) boolean
     }
 ```
 

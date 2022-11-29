@@ -1,27 +1,29 @@
 import java.util.ArrayList;
-import java.util.concurrent.ThreadLocalRandom;
+import java.util.UUID;
 
 public class Account {
-    public int id;
+    final UUID uuid = UUID.randomUUID();
     Client client;
     double balance;
     ArrayList<Loan> loans;
     ArrayList<Card> cards;
 
     public Account(Client client) {
-        this.id = 1;
         this.client = client;
         this.balance = 0;
         this.loans = new ArrayList<>();
         this.cards = new ArrayList<>();
     }
 
-    public boolean deposit( int amount) {
+    public boolean deposit(int amount) {
+        if (amount < 0) {
+            return false;
+        }
         this.balance += amount;
         return true;
     }
 
-    public boolean takeout( int amount) {
+    public boolean takeout(int amount) {
         if (this.balance - amount >= 0) {
             this.balance -= amount;
             return true;
@@ -30,13 +32,12 @@ public class Account {
     }
 
     public boolean transfer(int accountId, int amount) {
-        return true;
+        return !(amount > balance);
     }
 
     public Card createCard(int pinNumber) {
-        Card card = new Card(this, pinNumber);
+        Card card = new Card(this.uuid, pinNumber);
         this.cards.add(card);
         return card;
-
     }
 }

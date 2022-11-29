@@ -7,27 +7,24 @@ class BankTest {
     @Test
     void testAddingClientoBankWhenHeIsNull() {
         Bank bank = new Bank("Test");
-        assertThrows(Exception.class, () -> {
-            Client client = new Client(1, null, null);
-            bank.addClient(client);
-        });
+        assertThrows(Exception.class, () -> new Client(null, null));
     }
 
     @Test
     void testAddingClientoBankWhenHeIsPasswordIsNull(){
         Bank bank = new Bank("Test");
-        assertThrows(Exception.class, () -> new Client(1, "client1", null));
+        assertThrows(Exception.class, () -> new Client("client1", null));
     }
 
     @Test
     void testBankLogin() throws Exception {
         Bank bank = new Bank("Test");
-        Client client = new Client(1, "Mon nom", "client1");
+        Client client = new Client("Mon nom", "client1");
         Account account = new Account(client);
 
-        bank.addClient(client);
+        bank.addAccount(account);
 
-        Account userInfo = bank.login(account.id, "client1");
+        Account userInfo = bank.login(account.uuid, "client1");
 
         assertNotEquals(userInfo, null);
     }
@@ -35,25 +32,25 @@ class BankTest {
     @Test
     void testBanklogout() throws Exception {
         Bank bank = new Bank("Test");
-        Client client = new Client(1, "Mon nom", "client1");
+        Client client = new Client("Mon nom", "client1");
         Account account = new Account(client);
 
-        bank.addClient(client);
-        bank.login(account.id, "client1");
+        bank.addAccount(account);
+        bank.login(account.uuid, "client1");
 
-        assertTrue(bank.logout(client.idClient));
+        assertTrue(bank.logout(client.uuid));
     }
 
     @Test
     void testGiveLoan() throws Exception {
         Bank bank = new Bank("Test");
-        Client client = new Client(1, "Mon nom", "client1");
+        Client client = new Client("Mon nom", "client1");
         Account account = new Account(client);
 
-        bank.addClient(client);
-        Account userInfo = bank.login(account.id, "client1");
+        bank.addAccount(account);
+        Account userInfo = bank.login(account.uuid, "client1");
 
         bank.giveLoan(userInfo, 150);
-        assertEquals(bank.connected.get(0).balance, 150);
+        assertEquals(userInfo.balance, 150);
     }
 }
