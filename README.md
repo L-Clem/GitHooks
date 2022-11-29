@@ -55,7 +55,7 @@ classDiagram
     Loan ..> Account
 
     class Client{
-        UUID uuid
+        ~UUID uuid
         String name
         Strig password
 
