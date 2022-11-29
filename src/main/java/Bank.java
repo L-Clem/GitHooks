@@ -1,13 +1,13 @@
 import java.util.ArrayList;
+import java.util.UUID;
 
 public class Bank {
-    private int id;
+    private final UUID uuid = UUID.randomUUID();
     public String name;
     private ArrayList<Account> accounts;
     private ArrayList<Client> connected;
 
-    Bank(int id, String name){
-        this.id = id;
+    Bank(String name){
         this.name = name;
     }
 

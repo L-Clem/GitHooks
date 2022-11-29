@@ -1,15 +1,15 @@
 import java.util.ArrayList;
+import java.util.UUID;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Account {
-    public int id;
+    private final UUID uuid = UUID.randomUUID();
     Client client;
     public double balance;
     ArrayList<Loan> loans;
     ArrayList<Card> cards;
 
     public Account(Client client) {
-        this.id = ThreadLocalRandom.current().nextInt();
         this.client = client;
         this.balance = 0;
         this.loans = new ArrayList<>();
