@@ -16,7 +16,10 @@ public class Account {
         this.cards = new ArrayList<>();
     }
 
-    public boolean deposit( int amount) {
+    public boolean deposit(int amount) {
+        if (amount < 0) {
+            return false;
+        }
         this.balance += amount;
         return true;
     }
@@ -30,11 +33,15 @@ public class Account {
     }
 
     public boolean transfer(int accountId, int amount) {
+        if (amount > balance) {
+            return false;
+        }
+
         return true;
     }
 
-    public Card createCard(Account account, int pinNumber) {
-        Card card = new Card(account, pinNumber);
+    public Card createCard(int pinNumber) {
+        Card card = new Card(this.id, pinNumber);
         this.cards.add(card);
         return card;
     }

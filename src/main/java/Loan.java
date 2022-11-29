@@ -11,12 +11,12 @@ public class Loan {
         this.outstanding = amount;
     }
 
-    boolean pay(int accountId, int amount) {
-        if (accountId.balance < amount) {
+    boolean pay(Account account, int amount) {
+        if (account.balance < amount) {
             return false;
         }
 
-        accountId.balance -= amount;
+        account.balance -= amount;
         this.outstanding -= amount;
 
         return true;
