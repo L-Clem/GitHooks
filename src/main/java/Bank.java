@@ -11,7 +11,7 @@ public class Bank {
         this.name = name;
     }
 
-    public boolean login(int accountId, String password){
+    public boolean login(UUID accountId, String password){
         for(int i=0; i < this.connected.size(); i++){
             if (this.connected.contains(this.connected.get(i))){
                 return true;
@@ -19,7 +19,7 @@ public class Bank {
         }
 
         for (Account account : this.accounts) {
-            if (account.id == accountId && account.client.password.equals(password)) {
+            if (account.uuid.equals(accountId) && account.client.password.equals(password)) {
                 this.connected.add(account.client);
                 return true;
             }
@@ -29,7 +29,7 @@ public class Bank {
 
     public boolean logout(int clientId){
         for (int i =0; i < this.connected.size(); i++){
-            if (this.connected.get(i).idClient == clientId){
+            if (this.connected.get(i).uuid.equals(clientId)){
                 this.connected.remove(i);
                 return true;
             }

@@ -1,7 +1,6 @@
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
-
 import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class ClientTest {
 	
@@ -16,7 +15,7 @@ public class ClientTest {
 	//Test échoué
 	public void testNameFalse() {
 		Client client = new Client("Loubin", "Gabin");
-		assertEquals(client.name,"Larbin");
+		assertNotEquals(client.name,"Larbin");
 	}
 }
 

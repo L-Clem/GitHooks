@@ -2,7 +2,7 @@ import java.util.UUID;
 
 public class Card {
 	// Variables
-	private final UUID uuid = UUID.randomUUID();
+	final UUID uuid = UUID.randomUUID();
 	int cardNumber;
 	int pinNumber;
 	int idAccount;
