@@ -1,14 +1,16 @@
+import java.util.ArrayList;
+import java.util.UUID;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Loan {
-    private final int id;
-    private final int amount;
-    private double outstanding;
+    private final UUID uuid = UUID.randomUUID();
+    final int amount;
+    double outstanding;
 
     Loan(int amount) {
         this.amount = amount;
-        this.id = ThreadLocalRandom.current().nextInt();
         this.outstanding = amount;
+
     }
 
     boolean pay(Account account, int amount) {

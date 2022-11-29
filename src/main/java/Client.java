@@ -1,8 +1,9 @@
+import java.util.UUID;
 
 public class Client {
 		
 	// Variables 
-	int idClient;
+	private final UUID uuid = UUID.randomUUID();
 	String name;
 	String password;
 	
