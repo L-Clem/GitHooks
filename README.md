@@ -55,7 +55,7 @@ classDiagram
     Loan ..> Account
 
     class Client{
-        int id
+        -UUID uuid
         String name
         Strig password
 
@@ -63,7 +63,7 @@ classDiagram
     }
 
     class Bank{
-        int id
+        -UUID uuid
         ArrayList~Client~ clients
         ArrayqList~Client~ connected
 
@@ -74,7 +74,7 @@ classDiagram
     }
 
     class Account{
-        int id
+        -UUID uuid
         Client client
         double balance
         ArrayList~Loan~ loans
@@ -88,6 +88,7 @@ classDiagram
     }
 
     class Card{
+        -UUID uuid
         int cardNumber
         int pinNumber
         Account account
@@ -98,9 +99,9 @@ classDiagram
     }
 
     class Loan{
-        -int id
-        -int amount
-        -double outstanding
+        -UUID uuid
+        ~int amount
+        ~double outstanding
 
         ~Loan(int amount) Loan
         ~pay(Account account, int amount) boolean
