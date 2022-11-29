@@ -5,11 +5,11 @@ public class Card {
 	private final UUID uuid = UUID.randomUUID();
 	int cardNumber;
 	int pinNumber;
-	Account account;
+	int idAccount;
 	
 	// Constructeur
-	Card(Account account, int pinNumber){
-		this.account = account;
+	Card(int idAccount, int pinNumber){
+		this.idAccount = idAccount;
 		this.pinNumber = pinNumber;
 	}
 	
