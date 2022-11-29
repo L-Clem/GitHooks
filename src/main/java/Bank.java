@@ -1,16 +1,14 @@
 import java.util.ArrayList;
 
 public class Bank {
-    private int id;
     public String name;
     public ArrayList<Account> accounts;
     public ArrayList<Account> connected;
 
-    Bank(int id, String name){
-        this.id = id;
+    Bank(String name){
         this.name = name;
-        this.accounts = new ArrayList<Account>();
-        this.connected = new ArrayList<Account>();
+        this.accounts = new ArrayList<>();
+        this.connected = new ArrayList<>();
     }
 
     public Account login(int accountId, String password){
@@ -39,14 +37,13 @@ public class Bank {
         return false;
     }
 
-    public boolean giveLoan(Account account, int amount){
+    public void giveLoan(Account account, int amount){
         for (int z = 0; z < this.accounts.size(); z++){
             if (this.connected.get(z).client.idClient == account.client.idClient){
                 this.connected.get(z).balance = amount;
-                return this.connected.get(z).loans.add(new Loan(amount));
+                this.connected.get(z).loans.add(new Loan(amount));
             }
         }
-        return false;
     }
 
     public void addClient(Client client) throws Exception {

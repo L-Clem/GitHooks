@@ -10,9 +10,9 @@ public class Main {
 		Client client3 = new Client(3, "Proust", "Lou");
 
         ArrayList<Bank> banks = new ArrayList<>();
-        banks.add(new Bank(1,"Cool bank"));
-        banks.add(new Bank(2,"Evil bank"));
-        banks.add(new Bank(3,"Normal bank"));
+        banks.add(new Bank("Cool bank"));
+        banks.add(new Bank("Evil bank"));
+        banks.add(new Bank("Normal bank"));
         Scanner scanner = new Scanner(System.in);
 
         banks.get(1).addClient(client1);
