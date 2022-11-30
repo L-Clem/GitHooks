@@ -1,5 +1,3 @@
-import org.junit.After;
-import org.junit.Before;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -8,8 +6,9 @@ import static org.junit.jupiter.api.Assertions.*;
 class AccountTest {
     Client client;
     Account account;
+
     @BeforeEach
-    public void init() {
+    public void init() throws Exception {
         client = new Client("test-client", "test-password");
         account = new Account(client);
     }
@@ -19,8 +18,9 @@ class AccountTest {
         account.deposit(80);
         assertEquals(80, account.balance);
     }
+
     @Test
-    void takeout() {
+    void takeout() throws Exception {
         Client client = new Client("test-client", "test-password");
         Account account = new Account(client);
         account.balance = 100;
@@ -31,8 +31,9 @@ class AccountTest {
         assertTrue(account.takeout(20));
         assertEquals(0, account.balance);
     }
+
     @Test
-    void takeoutMoreThanCurrentBalance() {
+    void takeoutMoreThanCurrentBalance() throws Exception {
         Client client = new Client("test-client", "test-password");
         Account account = new Account(client);
         account.balance = 70;
@@ -42,11 +43,11 @@ class AccountTest {
     }
 
     @Test
-    void createCard() {
+    void createCard() throws Exception {
         Client client = new Client("test-client", "test-password");
         Account account = new Account(client);
         account.createCard(6812);
         assertEquals(6812, account.cards.get(0).pinNumber);
-        assertEquals(account.id, account.cards.get(0).idAccount);
+        assertEquals(account.uuid, account.cards.get(0).idAccount);
     }
 }

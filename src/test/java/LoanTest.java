@@ -1,12 +1,12 @@
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.Assertions;
 
 public class LoanTest {
 	Account account;
 
 	@BeforeEach
-	void init() {
+	void init() throws Exception {
 		Client client = new Client("Client", "pwd");
 		account = new Account(client);
 		account.balance = 100000;
@@ -16,10 +16,10 @@ public class LoanTest {
 	// Test réussi
 	public void testCreateLoan() {
 		Loan loan = new Loan(100000);
-		Assertions.assertEquals(loan.amount,100000);
+		Assertions.assertEquals(loan.amount, 100000);
 		Assertions.assertEquals(loan.outstanding, 100000);
 	}
-	
+
 	@Test
 	//Test échoué
 	public void testCreateLoanPayBalanceOkay() {
@@ -27,7 +27,7 @@ public class LoanTest {
 
 		Assertions.assertTrue(loan.pay(account, 100000));
 
-		Assertions.assertEquals(loan.outstanding,0);
+		Assertions.assertEquals(loan.outstanding, 0);
 		Assertions.assertEquals(account.balance, 0);
 	}
 
@@ -39,7 +39,7 @@ public class LoanTest {
 
 		Assertions.assertFalse(loan.pay(account, 100000));
 
-		Assertions.assertEquals(loan.outstanding,100000);
+		Assertions.assertEquals(loan.outstanding, 100000);
 	}
 }
 

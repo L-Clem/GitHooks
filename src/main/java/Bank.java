@@ -2,34 +2,35 @@ import java.util.ArrayList;
 import java.util.UUID;
 
 public class Bank {
-    private final UUID uuid = UUID.randomUUID();
     public String name;
-    private ArrayList<Account> accounts;
-    private ArrayList<Client> connected;
+    public ArrayList<Account> accounts;
+    public ArrayList<Account> connected;
 
-    Bank(String name){
+    Bank(String name) {
         this.name = name;
+        this.accounts = new ArrayList<>();
+        this.connected = new ArrayList<>();
     }
 
-    public boolean login(UUID accountId, String password){
-        for(int i=0; i < this.connected.size(); i++){
-            if (this.connected.contains(this.connected.get(i))){
-                return true;
+    public Account login(UUID accountId, String password) {
+        for (int i = 0; i < this.connected.size(); i++) {
+            if (this.connected.contains(this.connected.get(i))) {
+                return this.connected.get(i);
             }
         }
 
         for (Account account : this.accounts) {
-            if (account.uuid.equals(accountId) && account.client.password.equals(password)) {
-                this.connected.add(account.client);
-                return true;
+            if (account.uuid == accountId && account.client.password.equals(password)) {
+                this.connected.add(account);
+                return account;
             }
         }
-        return false;
+        return null;
     }
 
-    public boolean logout(int clientId){
-        for (int i =0; i < this.connected.size(); i++){
-            if (this.connected.get(i).uuid.equals(clientId)){
+    public boolean logout(UUID clientUUID) {
+        for (int i = 0; i < this.connected.size(); i++) {
+            if (this.connected.get(i).client.uuid.equals(clientUUID)) {
                 this.connected.remove(i);
                 return true;
             }
@@ -37,11 +38,16 @@ public class Bank {
         return false;
     }
 
-    public boolean giveLoan(Account account, int amount){
-        return account.loans.add(new Loan(amount));
+    public void giveLoan(Account account, int amount) {
+        for (int z = 0; z < this.accounts.size(); z++) {
+            if (this.connected.get(z).uuid == account.uuid) {
+                this.connected.get(z).balance = amount;
+                this.connected.get(z).loans.add(new Loan(amount));
+            }
+        }
     }
 
-    public void addClient(Client client) {
-        this.accounts.add(new Account(client));
+    public void addAccount(Account account) throws Exception {
+        this.accounts.add(account);
     }
 }
