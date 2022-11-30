@@ -6,7 +6,6 @@ public class Client {
 	String name;
 	String password;
 
-	//Constructeur
 	Client(String name, String password) throws Exception {
 		if (name != null && password != null) {
 			this.name = name;

@@ -2,7 +2,8 @@ import java.util.ArrayList;
 import java.util.UUID;
 
 public class Bank {
-    public String name;
+    UUID uuid;
+    String name;
     public ArrayList<Account> accounts;
     public ArrayList<Account> connected;
 
@@ -12,7 +13,7 @@ public class Bank {
         this.connected = new ArrayList<>();
     }
 
-    public Account login(UUID accountId, String password) {
+    Account login(UUID accountUUID, String password) {
         for (int i = 0; i < this.connected.size(); i++) {
             if (this.connected.contains(this.connected.get(i))) {
                 return this.connected.get(i);
@@ -20,7 +21,7 @@ public class Bank {
         }
 
         for (Account account : this.accounts) {
-            if (account.uuid == accountId && account.client.password.equals(password)) {
+            if (account.uuid == accountUUID && account.client.password.equals(password)) {
                 this.connected.add(account);
                 return account;
             }
@@ -28,7 +29,7 @@ public class Bank {
         return null;
     }
 
-    public boolean logout(UUID clientUUID) {
+    boolean logout(UUID clientUUID) {
         for (int i = 0; i < this.connected.size(); i++) {
             if (this.connected.get(i).client.uuid.equals(clientUUID)) {
                 this.connected.remove(i);
@@ -38,7 +39,7 @@ public class Bank {
         return false;
     }
 
-    public void giveLoan(Account account, int amount) {
+    void giveLoan(Account account, int amount) {
         for (int z = 0; z < this.accounts.size(); z++) {
             if (this.connected.get(z).uuid == account.uuid) {
                 this.connected.get(z).balance = amount;
@@ -47,7 +48,7 @@ public class Bank {
         }
     }
 
-    public void addAccount(Account account) throws Exception {
+    void addAccount(Account account) throws Exception {
         this.accounts.add(account);
     }
 }

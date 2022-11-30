@@ -56,46 +56,49 @@ classDiagram
 
     class Client{
         ~UUID uuid
-        String name
-        Strig password
+        ~String name
+        ~String password
 
-        Client(String name, String password) Client
+        ~Client(String name, String password) Client
     }
 
     class Bank{
         ~UUID uuid
-        ArrayList~Client~ clients
-        ArrayqList~Client~ connected
+        ~String name
+        ~ArrayList~Account~ accounts
+        ~ArrayList~Account~ connected
+        ~ArrayList~Banks~ banks$
 
-        Bank(int id, List~Client~) Bank
-        login(int accountId, String password) boolean
-        logout(int clientId) boolean
-        giveLoan(Account account, int amount) Loan
+        ~Bank(String name) Bank
+        ~login(UUID accountUUId, String password) account
+        ~logout(UUIS clientUUID) boolean
+        ~giveLoan(Account account, int amount)
+        ~addAccount(Account account)
     }
 
     class Account{
         ~UUID uuid
-        Client client
-        double balance
-        ArrayList~Loan~ loans
-        ArrayList~Card~ cards
+        ~Client client
+        ~double balance
+        ~ArrayList~Loan~ loans
+        ~ArrayList~Card~ cards
 
-        Account(Client client) Account
-        createCard(int pinNumber) boolean
-        transfert(int accountId, int amount) boolean
-        deposit(int amount) boolean
-        takeout(int amount) boolean
+        ~Account(Client client) Account
+        ~createCard(int pinNumber) boolean
+        ~deposit(int amount) boolean
+        ~takeout(int amount) boolean
+        ~transfert(UUID accountUUID, int amount) boolean
+        ~createCard(int pinNumber) Card
     }
 
     class Card{
         ~UUID uuid
-        int cardNumber
-        int pinNumber
-        Account account
+        ~String cardNumber
+        ~int pinNumber
 
-        Card(Account account, int pinNumber) Card
-        deposit(int amount, int pinNumber) boolean
-        takeout(int amount, int pinNumber) boolean
+        ~Card(int pinNumber) Card
+        ~deposit(int amount, int pinNumberGiven) boolean
+        ~takeout(int amount, int pinNumberGiven) boolean
     }
 
     class Loan{

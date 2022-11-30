@@ -8,14 +8,14 @@ public class Account {
     ArrayList<Loan> loans;
     ArrayList<Card> cards;
 
-    public Account(Client client) {
+    Account(Client client) {
         this.client = client;
         this.balance = 0;
         this.loans = new ArrayList<>();
         this.cards = new ArrayList<>();
     }
 
-    public boolean deposit(int amount) {
+    boolean deposit(int amount) {
         if (amount < 0) {
             return false;
         }
@@ -23,7 +23,7 @@ public class Account {
         return true;
     }
 
-    public boolean takeout(int amount) {
+    boolean takeout(int amount) {
         if (this.balance - amount >= 0) {
             this.balance -= amount;
             return true;
@@ -31,12 +31,12 @@ public class Account {
         return false;
     }
 
-    public boolean transfer(int accountId, int amount) {
+    boolean transfer(int accountId, int amount) {
         return !(amount > balance);
     }
 
-    public Card createCard(int pinNumber) {
-        Card card = new Card(this.uuid, pinNumber);
+    Card createCard(int pinNumber) {
+        Card card = new Card(pinNumber);
         this.cards.add(card);
         return card;
     }
