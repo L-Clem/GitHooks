@@ -6,5 +6,4 @@ find ../src -name "*.java" > sources.txt
 javac -d ../target -cp target:./junit-platform-console-standalone-1.9.1.jar @sources.txt
 
 # Java >= 11
-#exec java "$DIR"/PrePush.java "$@" "$DIR"
-echo "$1" "$DIR"
+exec java "$DIR"/PrePush.java "$@" "$DIR"
