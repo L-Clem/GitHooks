@@ -40,8 +40,8 @@ To run tests, run the following command:
   - commit-msg: Run PreCommit.java and pass commit path to it.
   - PreCommit.java: Test the commit message against the defined schema (cf. Commits section).
 - Pre-Push:
-  - pre-push: Run PrePush.java.
-  - PrePush.java: WIP.
+  - pre-push: Build classes and then run PrePush.java.
+  - PrePush.java: Run JUnit5 test command.
 
 ### Class diagram
 
