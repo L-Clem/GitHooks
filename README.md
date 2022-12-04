@@ -3,17 +3,8 @@
 
 Little project to show our understanding of git's hook system.
 
-## Commits
+The project isn't runing with a database in mind, so the classes tries to reflect what it's relational DB would have been.
 
-Attention, your commits will have to follow this syntax:
-
-```txt
-<gitmoji1, gitmoji2...> (scope1, scope2...): Message
-```
-Exemple with [Gitmoji](https://gitmoji.dev/):
-```txt
-🎨, ⚡️ (dev, card): Add card to something
-```
 
 ## Installation
 
@@ -22,16 +13,6 @@ To initialise the project with git, run this command in the local repository:
 ```bash
   git config core.hooksPath .hooks
 ```
-
-    
-## Running Tests
-
-To run tests, run the following command:
-
-```bash
-  npm run test
-```
-
 
 ## Documentation
 
@@ -42,6 +23,28 @@ To run tests, run the following command:
 - Pre-Push:
   - `pre-push`: Build classes and then run `PrePush.java`.
   - `PrePush.java`: Verify JUnit5 tests.
+
+### Commits
+
+⚠️ Attention, your commits will have to follow this syntax:
+
+```txt
+<gitmoji1, gitmoji2...> (scope1, scope2...): Message
+```
+Exemple with [Gitmoji](https://gitmoji.dev/):
+```txt
+🎨, ⚡️ (dev, card): Add card to something
+```
+
+### Running Tests
+
+To run tests, run the following commands:
+
+```bash
+  find [pathToProject]/src -name "*.java" > [pathToProject]/.hooks/sources.txt
+  javac -d [pathToProject]/target -cp target:[pathToProject]/.hooks/junit-platform-console-standalone-1.9.1.jar @[pathToProject]/.hooks/sources.txt
+  java -jar [pathToProject]/.hooks/junit-platform-console-standalone-1.9.1.jar --class-path [pathToProject]/target --scan-class-path
+```
 
 ### Class diagram
 
