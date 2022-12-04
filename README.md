@@ -6,15 +6,15 @@ Little project to show our understanding of git's hook system.
 The project isn't runing with a database in mind, so the classes tries to reflect what it's relational DB would have been.
 
 
-## Installation
+## Documentation
 
-To initialise the project with git, run this command in the local repository:
+### Installation
+
+To initialise the git hooks of the project, run this command in the local repository's root:
 
 ```bash
   git config core.hooksPath .hooks
 ```
-
-## Documentation
 
 ### Git hooks list
 - Commit: 
