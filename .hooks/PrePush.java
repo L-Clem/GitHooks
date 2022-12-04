@@ -1,8 +1,4 @@
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-
 import java.lang.Process;
-import java.lang.Runtime;
 
 public class PrePush {
     public static void main(String[] args) throws Exception {
