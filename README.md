@@ -1,7 +1,7 @@
 
 # Git Hooks
 
-Little project to show our understanding of git's hook system.
+Little project to show our understanding of git's hooks system.
 
 The project isn't runing with a database in mind, so the classes tries to reflect what it's relational DB would have been.
 
