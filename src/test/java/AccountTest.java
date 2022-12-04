@@ -48,6 +48,5 @@ class AccountTest {
         Account account = new Account(client);
         account.createCard(6812);
         assertEquals(6812, account.cards.get(0).pinNumber);
-        assertEquals(account.uuid, account.cards.get(0).idAccount);
     }
 }
