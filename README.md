@@ -3,28 +3,52 @@
 
 Little project to show our understanding of git's hook system.
 
+The project isn't runing with a database in mind, so the classes tries to reflect what it's relational DB would have been.
 
-## Installation
 
-To initialise the project with git, run this command in the local repository :
+## Documentation
+
+### Installation
+
+To initialise the git hooks of the project, run this command in the local repository's root:
 
 ```bash
   git config core.hooksPath .hooks
 ```
 
-    
-## Running Tests
+### Git hooks list
+- Commit: 
+  - `commit-msg`: Run PreCommit.java and pass commit path to it.
+  - `PreCommit.java`: Test the commit message against the defined schema (cf. Commits section).
+- Pre-Push:
+  - `pre-push`: Build classes and then run `PrePush.java`.
+  - `PrePush.java`: Verify JUnit5 tests.
 
-To run tests, run the following command :
+### Commits
 
-```bash
-  npm run test
+⚠️ Attention, your commits will have to follow this syntax:
+
+```txt
+<gitmoji1, gitmoji2...> (scope1, scope2...): Message
+```
+Exemple with [Gitmoji](https://gitmoji.dev/):
+```txt
+🎨, ⚡️ (dev, card): Add card to something
 ```
 
+### Running Tests
 
-## Documentation
+To run tests, run the following commands:
 
-Class diagram of the solution.
+```bash
+  find [pathToProject]/src -name "*.java" > [pathToProject]/.hooks/sources.txt
+  javac -d [pathToProject]/target -cp target:[pathToProject]/.hooks/junit-platform-console-standalone-1.9.1.jar @[pathToProject]/.hooks/sources.txt
+  java -jar [pathToProject]/.hooks/junit-platform-console-standalone-1.9.1.jar --class-path [pathToProject]/target --scan-class-path
+```
+
+### Class diagram
+
+Class diagram of the solution:
 
 ```mermaid
 classDiagram
@@ -34,60 +58,64 @@ classDiagram
     Loan ..> Account
 
     class Client{
-        int id
-        String name
-        Strig password
+        ~UUID uuid
+        ~String name
+        ~String password
 
-        Client(String name, String password) Client
+        ~Client(String name, String password) Client
     }
 
     class Bank{
-        int id
-        List~Client~ clients
-        List~Client~ connected
+        ~UUID uuid
+        ~String name
+        ~ArrayList~Account~ accounts
+        ~ArrayList~Account~ connected
+        ~ArrayList~Banks~ banks$
 
-        Bank(int id, List~Client~) Bank
-        login(int accountId, String password) bool
-        logout(int clientId) bool
-        giveLoan(Account account, int amount) Loan
+        ~Bank(String name) Bank
+        ~login(UUID accountUUId, String password) account
+        ~logout(UUIS clientUUID) boolean
+        ~giveLoan(Account account, int amount)
+        ~addAccount(Account account)
     }
 
     class Account{
-        int id
-        Client client
-        double balance
-        List~Loan~ loans
-        List~Card~ cards
+        ~UUID uuid
+        ~Client client
+        ~double balance
+        ~ArrayList~Loan~ loans
+        ~ArrayList~Card~ cards
 
-        Account(Client client) Account
-        createCard(int pinNumber) bool
-        transfert(int accountId, int amount) bool
-        deposit(int amount) bool
-        takeout(int amount) bool
+        ~Account(Client client) Account
+        ~createCard(int pinNumber) boolean
+        ~deposit(int amount) boolean
+        ~takeout(int amount) boolean
+        ~transfert(UUID accountUUID, int amount) boolean
+        ~createCard(int pinNumber) Card
     }
 
     class Card{
-        int cardNumber
-        int pinNumber
-        Account cardAccount
+        ~UUID uuid
+        ~String cardNumber
+        ~int pinNumber
 
-        Card(Account account, int pinNumber) Card
-        deposit(int amount, int pinNumber) bool
-        takeout(int amount, int pinNumber) bool
+        ~Card(int pinNumber) Card
+        ~deposit(int amount, int pinNumberGiven) boolean
+        ~takeout(int amount, int pinNumberGiven) boolean
     }
 
     class Loan{
-        int id
-        int amount
-        double outstanding
+        ~UUID uuid
+        ~int amount
+        ~double outstanding
 
-        Loan(int amount) Loan
-        pay(int amount) bool
+        ~Loan(int amount) Loan
+        ~pay(Account account, int amount) boolean
     }
 ```
 
 ## Screenshots
-Screenshot of the interface :
+Screenshot of the interface:
 
 ![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
 

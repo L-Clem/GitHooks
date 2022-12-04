@@ -4,4 +4,4 @@
 DIR=$(dirname "$0")
 
 # Java >= 11
-exec java $DIR/PreCommit.java "$@"
+exec java "$DIR"/PreCommit.java "$@"
