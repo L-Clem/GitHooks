@@ -37,11 +37,11 @@ To run tests, run the following command:
 
 ### Git hooks list
 - Commit: 
-  - commit-msg: Run PreCommit.java and pass commit path to it.
-  - PreCommit.java: Test the commit message against the defined schema (cf. Commits section).
+  - `commit-msg`: Run PreCommit.java and pass commit path to it.
+  - `PreCommit.java`: Test the commit message against the defined schema (cf. Commits section).
 - Pre-Push:
-  - pre-push: Build classes and then run PrePush.java.
-  - PrePush.java: Run JUnit5 test command.
+  - `pre-push`: Build classes and then run PrePush.java.
+  - `PrePush.java`: Verify JUnit5 tests.
 
 ### Class diagram
 
