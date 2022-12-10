@@ -3,13 +3,16 @@ import java.util.UUID;
 
 public class Account {
     final UUID uuid = UUID.randomUUID();
+    String password;
+
     Client client;
     double balance;
     ArrayList<Loan> loans;
     ArrayList<Card> cards;
 
-    Account(Client client) {
+    Account(Client client, String password) {
         this.client = client;
+        this.password = password;
         this.balance = 0;
         this.loans = new ArrayList<>();
         this.cards = new ArrayList<>();
