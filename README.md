@@ -1,7 +1,7 @@
 [![CodeFactor](https://www.codefactor.io/repository/github/l-clem/githooks/badge)](https://www.codefactor.io/repository/github/l-clem/githooks) ![GitHub repo size](https://img.shields.io/github/repo-size/L-Clem/GitHooks) ![Maintenance](https://img.shields.io/maintenance/yes/2022)
 # Git Hooks
 
-Little project to show our understanding of git's hook system.
+Little project to show our understanding of git's hooks system.
 
 The project isn't runing with a database in mind, so the classes tries to reflect what it's relational DB would have been.
 
