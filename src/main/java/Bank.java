@@ -6,7 +6,7 @@ public class Bank {
     String name;
     public ArrayList<Account> accounts;
     public ArrayList<Account> connected;
-    public static ArrayList<Bank> banks = new ArrayList<>();;
+    public static ArrayList<Bank> banks = new ArrayList<>();
 
     Bank(String name) {
         this.name = name;
