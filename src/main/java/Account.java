@@ -3,13 +3,16 @@ import java.util.UUID;
 
 public class Account {
     final UUID uuid = UUID.randomUUID();
+    String password;
+
     Client client;
     double balance;
     ArrayList<Loan> loans;
     ArrayList<Card> cards;
 
-    Account(Client client) {
+    Account(Client client, String password) {
         this.client = client;
+        this.password = password;
         this.balance = 0;
         this.loans = new ArrayList<>();
         this.cards = new ArrayList<>();
@@ -31,8 +34,24 @@ public class Account {
         return false;
     }
 
-    boolean transfer(int accountId, int amount) {
-        return !(amount > balance);
+    boolean transfer(UUID uuid, int amount) {
+        boolean transferred = false;
+        if (amount >= balance) {
+            for (int i = 0; i < Bank.banks.size(); i++) {
+                for (int j = 0; j < Bank.banks.get(i).accounts.size(); j++) {
+                    if(Bank.banks.get(i).accounts.get(j).uuid.equals(uuid)) {
+                        this.balance -= amount;
+                        Bank.banks.get(i).accounts.get(j).balance += amount;
+                        transferred = true;
+                    } else {
+                        System.out.println("Account with given account number doesn't exist");
+                    }
+                }
+            }
+        } else {
+            System.out.println("Not enough funds");
+        }
+        return transferred;
     }
 
     Card createCard(int pinNumber) {
