@@ -16,7 +16,6 @@ public class Bank {
     }
 
     boolean login(UUID accountUUID, String password) {
-        System.out.println("helloooo");
         for (int i = 0; i < this.connected.size(); i++) {
             if (this.connected.contains(this.connected.get(i))) {
                 return true;
@@ -45,16 +44,16 @@ public class Bank {
 
     void giveLoan(Account account, int amount) {
         for (int z = 0; z < this.accounts.size(); z++) {
-            if (this.connected.get(z).uuid == account.uuid) {
-                this.connected.get(z).balance = amount;
-                this.connected.get(z).loans.add(new Loan(amount));
+            if (this.accounts.get(z).uuid == account.uuid) {
+                this.accounts.get(z).balance += amount;
+                this.accounts.get(z).loans.add(new Loan(amount));
             }
         }
     }
 
     Client getCLient(UUID uuid) {
         for (Account account : this.accounts) {
-            if (uuid == account.client.uuid) {
+            if (account.uuid.equals(uuid)) {
                 return account.client;
             }
         }
@@ -63,7 +62,7 @@ public class Bank {
 
     Account getAccount(Client client) {
         for (Account account : this.accounts) {
-            if (client.uuid == account.client.uuid) {
+            if (account.client.uuid.equals(client.uuid)) {
                 return account;
             }
         }
