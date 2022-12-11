@@ -1,3 +1,5 @@
+package hooks;
+
 import java.nio.file.*;
 import java.util.regex.*;  
 
@@ -12,7 +14,7 @@ public class PreCommit {
   public static void main(String[] args) throws Exception {
     String data = readFileAsString(args[0]);
 
-    Pattern p = Pattern.compile("^.*\\(.+,*\\): [a-zA-Z1-9 ]*$");
+    Pattern p = Pattern.compile("^.*\\(.+,*\\): [a-zA-Z0-9 ]*$");
     Matcher m = p.matcher(data);  
     boolean b = m.find();  
 

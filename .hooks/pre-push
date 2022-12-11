@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# get the path to this script file
+DIR=$(dirname "$0")
+
+find ./src -name "*.java" > ./.hooks/sources.txt
+javac -d ./target -cp target:./.hooks/junit-platform-console-standalone-1.9.1.jar @./.hooks/sources.txt
+
+
+LOCAL_BRANCH=($(</dev/stdin))
+
+# Java >= 11
+exec java "$DIR"/PrePush.java "$(pwd)" "$LOCAL_BRANCH"
