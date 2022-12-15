@@ -7,13 +7,12 @@ public class LoanTest {
 
 	@BeforeEach
 	void init() throws Exception {
-		Client client = new Client("Client", "pwd");
-		account = new Account(client);
+		Client client = new Client("Client");
+		account = new Account(client, "password");
 		account.balance = 100000;
 	}
 
 	@Test
-	// Test réussi
 	public void testCreateLoan() {
 		Loan loan = new Loan(100000);
 		Assertions.assertEquals(loan.amount, 100000);
@@ -21,24 +20,20 @@ public class LoanTest {
 	}
 
 	@Test
-	//Test échoué
 	public void testCreateLoanPayBalanceOkay() {
 		Loan loan = new Loan(100000);
 
 		Assertions.assertTrue(loan.pay(account, 100000));
-
 		Assertions.assertEquals(loan.outstanding, 0);
 		Assertions.assertEquals(account.balance, 0);
 	}
 
 	@Test
-	//Test échoué
 	public void testCreateLoanPayBalanceNotOkay() {
 		account.balance = 0;
 		Loan loan = new Loan(100000);
 
 		Assertions.assertFalse(loan.pay(account, 100000));
-
 		Assertions.assertEquals(loan.outstanding, 100000);
 	}
 }
