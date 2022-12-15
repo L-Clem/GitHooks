@@ -116,11 +116,6 @@ classDiagram
     }
 ```
 
-## Screenshots
-Screenshot of the interface:
-
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
-
 
 ## Authors
 
