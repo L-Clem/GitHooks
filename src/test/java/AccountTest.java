@@ -9,8 +9,8 @@ class AccountTest {
 
     @BeforeEach
     public void init() throws Exception {
-        client = new Client("test-client", "test-password");
-        account = new Account(client);
+        client = new Client("test-client");
+        account = new Account(client, "test-password");
     }
 
     @Test
@@ -21,8 +21,8 @@ class AccountTest {
 
     @Test
     void takeout() throws Exception {
-        Client client = new Client("test-client", "test-password");
-        Account account = new Account(client);
+        client = new Client("test-client");
+        account = new Account(client, "test-password");
         account.balance = 100;
 
         assertTrue(account.takeout(80));
@@ -34,8 +34,8 @@ class AccountTest {
 
     @Test
     void takeoutMoreThanCurrentBalance() throws Exception {
-        Client client = new Client("test-client", "test-password");
-        Account account = new Account(client);
+        client = new Client("test-client");
+        account = new Account(client, "test-password");
         account.balance = 70;
 
         assertFalse(account.takeout(80));
@@ -44,8 +44,8 @@ class AccountTest {
 
     @Test
     void createCard() throws Exception {
-        Client client = new Client("test-client", "test-password");
-        Account account = new Account(client);
+        client = new Client("test-client");
+        account = new Account(client, "test-password");
         account.createCard(6812);
         assertEquals(6812, account.cards.get(0).pinNumber);
     }
