@@ -3,17 +3,10 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class BankTest {
-
     @Test
     void testAddingClientoBankWhenHeIsNull() {
         Bank bank = new Bank("Test");
         assertThrows(Exception.class, () -> new Client(null));
-    }
-
-    @Test
-    void testAddingClientoBankWhenHeIsPasswordIsNull(){
-        Bank bank = new Bank("Test");
-        assertThrows(Exception.class, () -> new Client("client1"));
     }
 
     @Test
@@ -23,7 +16,7 @@ class BankTest {
         Account account = new Account(client, "password");
 
         bank.register(account);
-        boolean login = bank.login(account.uuid, "client1");
+        boolean login = bank.login(account.uuid, "password");
         assertTrue(login);
     }
 
@@ -34,7 +27,7 @@ class BankTest {
         Account account = new Account(client, "password");
 
         bank.register(account);
-        bank.login(account.uuid, "client1");
+        bank.login(account.uuid, "password");
 
         assertTrue(bank.logout(account.uuid));
     }

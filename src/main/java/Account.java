@@ -1,16 +1,18 @@
+import org.jetbrains.annotations.NotNull;
+
 import java.util.ArrayList;
 import java.util.UUID;
 
 public class Account {
     final UUID uuid = UUID.randomUUID();
+    @NotNull
     String password;
-
     Client client;
     double balance;
     ArrayList<Loan> loans;
     ArrayList<Card> cards;
 
-    Account(Client client, String password) {
+    Account(Client client, @NotNull String password) {
         this.client = client;
         this.password = password;
         this.balance = 0;

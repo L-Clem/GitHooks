@@ -14,6 +14,12 @@ class AccountTest {
     }
 
     @Test
+    void accountWithNullPassword() throws Exception {
+        Client client = new Client("test-client");
+        assertThrows(Exception.class, () -> new Account(client, null));
+    }
+
+    @Test
     void deposit() {
         account.deposit(80);
         assertEquals(80, account.balance);
