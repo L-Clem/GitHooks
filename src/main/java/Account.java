@@ -38,7 +38,7 @@ public class Account {
 
     boolean transfer(UUID uuid, int amount) {
         boolean transferred = false;
-        if (amount >= balance) {
+        if (amount <= balance) {
             for (int i = 0; i < Bank.banks.size(); i++) {
                 for (int j = 0; j < Bank.banks.get(i).accounts.size(); j++) {
                     if(Bank.banks.get(i).accounts.get(j).uuid.equals(uuid)) {
