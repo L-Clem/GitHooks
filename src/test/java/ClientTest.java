@@ -6,17 +6,15 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 public class ClientTest {
 	
 	@Test
-	// Test réussi
 	public void testNomValide() throws Exception {
-		Client client = new Client("Le Blanc", "Eloïse");
-		assertEquals(client.name,"Le Blanc");
+		Client client = new Client("Eloïse Le Blanc");
+		assertEquals(client.name,"Eloïse Le Blanc");
 	}
 
 	@Test
-	//Test échoué
 	public void testNameFalse() throws Exception {
-		Client client = new Client("Loubin", "Gabin");
-		assertNotEquals(client.name,"Larbin");
+		Client client = new Client("Gabin Loubin");
+		assertNotEquals(client.name,"Gabin Larbin");
 	}
 }
 
