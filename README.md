@@ -22,7 +22,7 @@ To initialise the git hooks of the project, run this command in the local reposi
   - `PreCommit.java`: Test the commit message against the defined schema (cf. Commits section).
 - Pre-Push:
   - `pre-push`: Build classes and then run `PrePush.java`.
-  - `PrePush.java`: Verify JUnit5 tests.
+  - `PrePush.java`: Verify JUnit5 tests on dev and stages branches.
 
 ### Commits
 
