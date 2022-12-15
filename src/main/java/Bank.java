@@ -32,9 +32,11 @@ public class Bank {
         return false;
     }
 
-    boolean logout(UUID clientUUID) {
+    boolean logout(UUID accountUUID) {
         for (int i = 0; i < this.connected.size(); i++) {
-            if (this.connected.get(i).client.uuid.equals(clientUUID)) {
+            if (this.connected.get(i).uuid.equals(accountUUID)) {
+                System.out.println(this.connected.get(i).uuid);
+                System.out.println(accountUUID);
                 this.connected.remove(i);
                 return true;
             }

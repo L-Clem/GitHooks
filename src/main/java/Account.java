@@ -1,16 +1,18 @@
+import org.jetbrains.annotations.NotNull;
+
 import java.util.ArrayList;
 import java.util.UUID;
 
 public class Account {
     final UUID uuid = UUID.randomUUID();
+    @NotNull
     String password;
-
     Client client;
     double balance;
     ArrayList<Loan> loans;
     ArrayList<Card> cards;
 
-    Account(Client client, String password) {
+    Account(Client client, @NotNull String password) {
         this.client = client;
         this.password = password;
         this.balance = 0;
@@ -36,7 +38,7 @@ public class Account {
 
     boolean transfer(UUID uuid, int amount) {
         boolean transferred = false;
-        if (amount >= balance) {
+        if (amount <= balance) {
             for (int i = 0; i < Bank.banks.size(); i++) {
                 for (int j = 0; j < Bank.banks.get(i).accounts.size(); j++) {
                     if(Bank.banks.get(i).accounts.get(j).uuid.equals(uuid)) {

@@ -60,9 +60,8 @@ classDiagram
     class Client{
         ~UUID uuid
         ~String name
-        ~String password
 
-        ~Client(String name, String password) Client
+        ~Client(String name) Client
     }
 
     class Bank{
@@ -73,30 +72,32 @@ classDiagram
         ~ArrayList~Banks~ banks$
 
         ~Bank(String name) Bank
+        ~register(Account account) void
         ~login(UUID accountUUId, String password) account
         ~logout(UUIS clientUUID) boolean
         ~giveLoan(Account account, int amount)
-        ~addAccount(Account account)
+        ~getClient(UUID uuid) Client
+        ~getAccount(Client client) Account
     }
 
     class Account{
         ~UUID uuid
+        ~String password
         ~Client client
         ~double balance
         ~ArrayList~Loan~ loans
         ~ArrayList~Card~ cards
 
-        ~Account(Client client) Account
-        ~createCard(int pinNumber) boolean
+        ~Account(Client client, String password) Account
         ~deposit(int amount) boolean
         ~takeout(int amount) boolean
-        ~transfert(UUID accountUUID, int amount) boolean
+        ~transfer(UUID uuid, int amount) boolean
         ~createCard(int pinNumber) Card
     }
 
     class Card{
         ~UUID uuid
-        ~String cardNumber
+        ~Long cardNumber
         ~int pinNumber
 
         ~Card(int pinNumber) Card
